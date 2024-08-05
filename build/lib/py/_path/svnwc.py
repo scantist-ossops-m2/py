@@ -138,7 +138,7 @@ class SvnPathBase(common.PathBase):
     def new(self, **kw):
         """ create a modified version of this path. A 'rev' argument
             indicates a new revision.
-            the following keyword arguments modify various path parts:
+            the following keyword arguments modify various path parts::
 
               http://host.com/repo/path/file.ext
               |-----------------------|          dirname
@@ -396,7 +396,7 @@ class SvnAuth(object):
     def __str__(self):
         return "<SvnAuth username=%s ...>" %(self.username,)
 
-rex_blame = re.compile(r'\s*(\d+)\s+(\S+) (.*)')
+rex_blame = re.compile(r'\s*(\d+)\s*(\S+) (.*)')
 
 class SvnWCCommandPath(common.PathBase):
     """ path implementation offering access/modification to svn working copies.
