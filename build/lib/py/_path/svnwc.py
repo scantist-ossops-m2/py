@@ -327,7 +327,7 @@ def fixlocale():
     return ''
 
 # some nasty chunk of code to solve path and url conversion and quoting issues
-ILLEGAL_CHARS = '* | \\ / : < > ? \t \n \x0b \x0c \r'.split(' ')
+ILLEGAL_CHARS = '* | \ / : < > ? \t \n \x0b \x0c \r'.split(' ')
 if os.sep in ILLEGAL_CHARS:
     ILLEGAL_CHARS.remove(os.sep)
 ISWINDOWS = sys.platform == 'win32'
@@ -396,7 +396,7 @@ class SvnAuth(object):
     def __str__(self):
         return "<SvnAuth username=%s ...>" %(self.username,)
 
-rex_blame = re.compile(r'\s*(\d+)\s+(\S+) (.*)')
+rex_blame = re.compile(r'\s*(\d+)\s*(\S+) (.*)')
 
 class SvnWCCommandPath(common.PathBase):
     """ path implementation offering access/modification to svn working copies.
@@ -490,7 +490,7 @@ class SvnWCCommandPath(common.PathBase):
                 strerr.find('file already exists') != -1 or
                 strerr.find('w150002:') != -1 or
                 strerr.find("can't create directory") != -1):
-                raise py.error.EEXIST(strerr) #self)
+                raise py.error.EEXIST(self)
             raise
         return out
 
